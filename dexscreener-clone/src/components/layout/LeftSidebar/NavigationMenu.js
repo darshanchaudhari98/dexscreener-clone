@@ -19,6 +19,20 @@ const NavigationMenu = () => {
                 : "text-dex-text-secondary hover:bg-dex-bg-highlight hover:text-dex-text-primary"
             }`
           }
+          end
+        >
+          <span className="mr-3 w-5 text-center">🏠</span>
+          Home
+        </NavLink>
+        <NavLink
+          to="/trending"
+          className={({ isActive }) =>
+            `flex items-center px-4 py-2.5 text-sm rounded transition-colors ${
+              isActive
+                ? "bg-dex-bg-highlight text-dex-text-primary"
+                : "text-dex-text-secondary hover:bg-dex-bg-highlight hover:text-dex-text-primary"
+            }`
+          }
         >
           <span className="mr-3 w-5 text-center">📈</span>
           Trending
@@ -46,7 +60,7 @@ const NavigationMenu = () => {
             }`
           }
         >
-          <span className="mr-3 w-5 text-center">💼</span>
+          <span className="mr-3 w-5 text-center">💰</span>
           Portfolio
         </NavLink>
       </nav>

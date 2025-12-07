@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 :root {
-    --color-bg-primary: #0e1118;
-    --color-bg-secondary: #141722;
-    --color-bg-tertiary: #1e2330;
-    --color-bg-highlight: #252b3b;
-    --color-text-primary: #fff;
-    --color-text-secondary: #8a94a8;
-    --color-text-tertiary: #636d83;
-    --color-border: #2c3344;
-    --color-green: #16c784;
-    --color-red: #ea3943;
-    --color-blue: #4878ff;
+    --color-bg-primary: #1a0d2c;
+    --color-bg-secondary: #2d1646;
+    --color-bg-tertiary: #3b1d5b;
+    --color-bg-highlight: #4e2a73;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #c4a9ff;
+    --color-text-tertiary: #9d7ed9;
+    --color-border: #5e3a8a;
+    --color-green: #42f5a7;
+    --color-red: #ff4d6d;
+    --color-blue: #7b5dfa;
   }
 
   @keyframes slide-in {
@@ -44,4 +44,62 @@
   
   .animate-pulse-green {
     animation: pulseGreen 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* New animations for MemeCypher */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes glow {
+    0%, 100% {
+      text-shadow: 0 0 5px rgba(123, 93, 250, 0.5);
+    }
+    50% {
+      text-shadow: 0 0 20px rgba(123, 93, 250, 0.8), 0 0 30px rgba(123, 93, 250, 0.6);
+    }
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in forwards;
+  }
+  
+  /* Custom scrollbar for the meme theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-secondary);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-blue);
   }

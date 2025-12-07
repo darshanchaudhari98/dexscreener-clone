@@ -1,0 +1,11 @@
+{
+  "name": "dexscreener-clone-root",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "dexscreener-clone"
+  ],
+  "scripts": {
+    "start": "cd dexscreener-clone && npm start"
+  }
+}

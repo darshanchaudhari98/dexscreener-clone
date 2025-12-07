@@ -1,5 +1,5 @@
 // components/layout/TopBar/index.js
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FilterTools from "./FilterTools";
 
@@ -11,20 +11,21 @@ const TopBar = ({
   onSortChange,
 }) => {
   const navigate = useNavigate();
+  const [hoveredButton, setHoveredButton] = useState(null);
 
-  // Network buttons with their routes
+  // Network buttons with their routes - updated with meme-friendly icons
   const networks = [
     { id: "", name: "All Chains", icon: "🌐" },
-    { id: "solana", name: "Solana", icon: "🟣" },
-    { id: "ethereum", name: "Ethereum", icon: "🔷" },
-    { id: "base", name: "Base", icon: "🅱️" },
+    { id: "solana", name: "Solana", icon: "💜" },
+    { id: "ethereum", name: "Ethereum", icon: "💎" },
+    { id: "base", name: "Base", icon: "🔵" },
     { id: "bsc", name: "BSC", icon: "🟡" },
     { id: "ronin", name: "Ronin", icon: "🦊" },
   ];
 
-  // Page navigation buttons
+  // Page navigation buttons - updated with meme-friendly icons
   const pages = [
-    { id: "portfolio", name: "Portfolio", icon: "💼" },
+    { id: "portfolio", name: "Portfolio", icon: "💰" },
     { id: "pumpfun", name: "Pump.fun", icon: "🚀" },
   ];
 
@@ -37,13 +38,15 @@ const TopBar = ({
             {networks.map((network) => (
               <button
                 key={network.id}
-                className={`flex items-center px-3 py-2 rounded text-sm ${
+                className={`flex items-center px-3 py-2 rounded text-sm transition-all duration-300 ${
                   (network.id === "" && chainId === undefined) ||
                   chainId === network.id
-                    ? "bg-dex-blue text-white"
-                    : "bg-dex-bg-tertiary text-dex-text-primary hover:bg-dex-bg-highlight"
-                }`}
+                    ? "bg-dex-blue text-white shadow-lg shadow-dex-blue/30"
+                    : "bg-dex-bg-tertiary text-dex-text-primary hover:bg-dex-bg-highlight hover:scale-105"
+                } ${hoveredButton === network.id ? "animate-pulse-green" : ""}`}
                 onClick={() => navigate(`/${network.id}`)}
+                onMouseEnter={() => setHoveredButton(network.id)}
+                onMouseLeave={() => setHoveredButton(null)}
               >
                 <span className="mr-1">{network.icon}</span>
                 {network.name}
@@ -52,14 +55,16 @@ const TopBar = ({
           </div>
         </div>
 
-        {/* Page navigation buttons - now centered */}
+        {/* Page navigation buttons - now with hover effects */}
         <div className="flex items-center justify-center">
           <div className="flex space-x-2">
             {pages.map((page) => (
               <button
                 key={page.id}
-                className="flex items-center bg-dex-bg-tertiary hover:bg-dex-bg-highlight text-dex-text-primary rounded px-3 py-2 text-sm"
+                className={`flex items-center bg-dex-bg-tertiary hover:bg-dex-bg-highlight text-dex-text-primary rounded px-3 py-2 text-sm transition-all duration-300 hover:scale-105 ${hoveredButton === page.id ? "animate-pulse-green" : ""}`}
                 onClick={() => navigate(`/${page.id}`)}
+                onMouseEnter={() => setHoveredButton(page.id)}
+                onMouseLeave={() => setHoveredButton(null)}
               >
                 <span className="mr-1">{page.icon}</span>
                 {page.name}
